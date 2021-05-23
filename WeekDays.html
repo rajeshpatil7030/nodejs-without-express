@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<ul>
+  <li>
+    <a href="/"> Back To Home</a>
+  </li>
+</ul>
+  <h2 id="weekDay"></h2>
+  
+
+<script>
+function getWeekDay(d, dayNumber) {
+  d = new Date(d);
+  var day = d.getDay(),
+      diff = d.getDate() - day + (day == 0 ? (-7 + dayNumber) :dayNumber); // adjust when day is sunday
+  return new Date(d.setDate(diff));
+}
+
+let pathName = window.location.pathname;
+let weekDate = ""
+switch(pathName) {
+  case "/monday":
+    weekDate = getWeekDay(new Date(), 1)
+    break;
+  case "/tuesday":
+    weekDate = getWeekDay(new Date(), 2)
+    break;
+  case "/wednesday":
+    weekDate = getWeekDay(new Date(), 3)
+    break;
+  case "/thursday":
+    weekDate = getWeekDay(new Date(), 4)
+    break;
+  case "/friday":
+    weekDate = getWeekDay(new Date(), 5)
+    break;
+  case "/saturday":
+    weekDate = getWeekDay(new Date(), 6)
+    break;
+  case "/sunday":
+    weekDate = getWeekDay(new Date(), 7)
+    break;
+  default:
+}
+
+  document.getElementById("weekDay").innerHTML = weekDate;
+</script>
+
+</body>
+</html>
